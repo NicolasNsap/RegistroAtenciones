@@ -10,6 +10,7 @@ public class EspeMedicaModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long idEspeMedica;
+
     @Column(name = "nombre")
     private String nombre;
 

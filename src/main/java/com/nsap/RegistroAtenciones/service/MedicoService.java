@@ -29,9 +29,13 @@ public class MedicoService {
 
     //actualizar un medico existente
     public MedicoModel actualizarMedico(Long id, MedicoModel medicoModelDetails) {
+        //se obtiene el medico por su id
         MedicoModel medicoModel =  medicoRepository.findById(id).orElseThrow();
+        //se setean los nuevos datos asignados y en envian
         medicoModel.setNombreMedico(medicoModelDetails.getNombreMedico());
         medicoModel.setApellidoMedico(medicoModelDetails.getApellidoMedico());
+        medicoModel.setEspeMedica(medicoModelDetails.getEspeMedica());
+        //se guardar los nuevos datos asignados
         return medicoRepository.save(medicoModel);
     }
 

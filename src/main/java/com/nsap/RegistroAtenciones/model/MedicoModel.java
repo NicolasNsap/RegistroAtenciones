@@ -14,6 +14,9 @@ public class MedicoModel {
     private String nombreMedico;
     @Column(name = "apellido")
     private String apellidoMedico;
+    @OneToOne
+    @JoinColumn(name = "especialidad_id", referencedColumnName = "id")
+    private EspeMedicaModel espeMedica;
 
     //constructor vacio
     public MedicoModel() {}
@@ -46,5 +49,12 @@ public class MedicoModel {
 
     public void setApellidoMedico(String apellidoMedico) {
         this.apellidoMedico = apellidoMedico;
+    }
+
+    public EspeMedicaModel getEspeMedica() {
+        return espeMedica;
+    }
+    public void setEspeMedica(EspeMedicaModel espeMedica) {
+        this.espeMedica = espeMedica;
     }
 }

@@ -1,0 +1,46 @@
+CREATE TABLE registro_atenciones_medicas
+creación de tabla paciente
+CREATE TABLE Paciente (
+    rut VARCHAR(12) PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL
+);
+
+
+creación de tabla medico
+CREATE TABLE Medico (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellido VARCHAR(50) NOT NULL,
+    especialidad_id INT,
+    FOREIGN KEY (especialidad_id) REFERENCES EspecialidadMedica(id)
+);
+
+creación de tabla especialidad medica
+CREATE TABLE especialidad_medica (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL
+);
+
+creación tabla diagnostico 
+CREATE TABLE diagnostico (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT
+);
+
+creación de tabla ingreso 
+CREATE TABLE Ingreso (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    paciente_rut VARCHAR(12),
+    medico_id INT,
+    especialidad_id INT,
+    diagnostico_id INT,
+    fecha_ingreso DATE NOT NULL,
+    fecha_alta DATE,
+    FOREIGN KEY (paciente_rut) REFERENCES paciente(rut),
+    FOREIGN KEY (medico_id) REFERENCES medico(id),
+    FOREIGN KEY (especialidad_id) REFERENCES especialidad_medica(id),
+    FOREIGN KEY (diagnostico_id) REFERENCES diagnostico(id)
+);
+
